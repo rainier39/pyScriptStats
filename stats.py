@@ -5,7 +5,7 @@ import sys
 import os
 
 # Constants.
-VERSION = 1.0
+VERSION = 1.1
 HELPSCREEN = """Usage: python3 stats.py file [OPTIONS]...
 Calculate some statistics about a Python script.
 Disclaimer: not guarenteed to be accurate.
@@ -27,7 +27,11 @@ for i in range(1, len(sys.argv)):
     exit(0)
   # Anything other than a recognized flag will be assumed to be the Python script.
   else:
-    filename = sys.argv[i]
+    if (filename != None):
+      print("Too many arguments, expected one filename. Use -h or --help for help.")
+      exit()
+    else:
+      filename = sys.argv[i]
 
 if (filename == None):
   filename = input("Please enter the filename of a Python script: ")
